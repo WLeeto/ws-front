@@ -1,0 +1,24 @@
+
+
+class ChatApi {
+    constructor(apiURL) {
+        this.apiUrl = apiURL
+    }
+
+    async userQuitChat(username) {
+
+        const body = {userToRemove: username}
+        const result = await fetch(this.apiUrl + 'user', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+              },
+            body: JSON.stringify(body)
+        })
+        const status = result.status
+        console.log(status)
+    }
+}
+
+const apiUrl = 'http://127.0.0.1:7070/'
+export const api = new ChatApi(apiUrl) 
